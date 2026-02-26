@@ -1,4 +1,6 @@
-<!DOCTYPE html>
+
+</body>
+</html><!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -131,15 +133,15 @@ style="background-image: url('https://images.unsplash.com/photo-1555992336-cbf6a
 <section id="contact" class="py-20 px-6 max-w-4xl mx-auto text-center">
     <h3 class="text-4xl font-bold text-yellow-500 mb-6">Reserve Your Table</h3>
 
-    <form class="space-y-6">
-        <input type="text" placeholder="Full Name" class="w-full p-3 rounded bg-gray-800 border border-gray-700">
-        <input type="tel" placeholder="Phone Number" class="w-full p-3 rounded bg-gray-800 border border-gray-700">
-        <input type="date" class="w-full p-3 rounded bg-gray-800 border border-gray-700">
-        <input type="number" placeholder="Number of Guests" class="w-full p-3 rounded bg-gray-800 border border-gray-700">
-        <textarea placeholder="Special Request" class="w-full p-3 rounded bg-gray-800 border border-gray-700"></textarea>
+    <form id="reservationForm" class="space-y-6">
+        <input id="name" type="text" placeholder="Full Name" required class="w-full p-3 rounded bg-gray-800 border border-gray-700">
+        <input id="phone" type="tel" placeholder="Phone Number" required class="w-full p-3 rounded bg-gray-800 border border-gray-700">
+        <input id="date" type="date" required class="w-full p-3 rounded bg-gray-800 border border-gray-700">
+        <input id="guests" type="number" placeholder="Number of Guests" required class="w-full p-3 rounded bg-gray-800 border border-gray-700">
+        <textarea id="request" placeholder="Special Request" class="w-full p-3 rounded bg-gray-800 border border-gray-700"></textarea>
 
-        <button class="bg-yellow-500 text-black px-6 py-3 rounded-lg font-semibold hover:bg-yellow-400">
-            Submit Reservation
+        <button type="submit" class="bg-yellow-500 text-black px-6 py-3 rounded-lg font-semibold hover:bg-yellow-400">
+            Book via WhatsApp
         </button>
     </form>
 
@@ -149,10 +151,38 @@ style="background-image: url('https://images.unsplash.com/photo-1555992336-cbf6a
     </div>
 </section>
 
+<!-- WhatsApp Script -->
+<script>
+document.getElementById("reservationForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    const name = document.getElementById("name").value;
+    const phone = document.getElementById("phone").value;
+    const date = document.getElementById("date").value;
+    const guests = document.getElementById("guests").value;
+    const request = document.getElementById("request").value;
+
+    const message = `Hello Sai Elegance Restaurant,%0A%0AI would like to reserve a table.%0A%0AName: ${name}%0APhone: ${phone}%0ADate: ${date}%0ANumber of Guests: ${guests}%0ASpecial Request: ${request}`;
+
+    const whatsappNumber = "918296855345"; // ← REPLACE WITH REAL NUMBER
+
+    window.open(`https://wa.me/${whatsappNumber}?text=${message}`, "_blank");
+});
+</script>
+
+
 <!-- FOOTER -->
 <footer class="bg-black py-6 text-center text-gray-500">
     © 2026 Sai Elegance Restaurant | Designed Professionally
 </footer>
+
+<!-- Floating WhatsApp Button -->
+<a href="https://wa.me/918296855345" target="_blank"
+   class="fixed bottom-6 right-6 bg-green-500 p-4 rounded-full shadow-lg hover:scale-110 transition">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="white" viewBox="0 0 24 24" width="28" height="28">
+        <path d="M12.04 2C6.58 2 2.17 6.41 2.17 11.87c0 1.91.5 3.77 1.46 5.4L2 22l4.87-1.61c1.57.85 3.34 1.3 5.17 1.3 5.46 0 9.87-4.41 9.87-9.87C21.91 6.41 17.5 2 12.04 2zm5.77 14.08c-.24.67-1.41 1.31-1.95 1.37-.5.06-1.13.09-1.82-.14-.42-.14-.97-.32-1.67-.62-2.94-1.27-4.86-4.24-5.01-4.45-.15-.21-1.19-1.59-1.19-3.03 0-1.44.76-2.15 1.03-2.45.27-.3.59-.38.79-.38.2 0 .4 0 .57.01.18.01.42-.07.66.5.24.58.83 2.01.9 2.15.07.14.12.31.02.5-.09.19-.14.31-.29.48-.15.17-.32.37-.46.49-.15.12-.31.25-.13.49.18.24.79 1.3 1.7 2.1 1.17 1.05 2.15 1.38 2.45 1.53.3.15.47.13.64-.08.17-.21.74-.87.94-1.17.2-.3.4-.25.67-.15.27.09 1.71.81 2 .96.29.15.49.22.56.34.07.12.07.69-.17 1.36z"/>
+    </svg>
+</a>
 
 </body>
 </html>
